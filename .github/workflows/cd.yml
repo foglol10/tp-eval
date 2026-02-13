@@ -21,3 +21,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           force_orphan: true
+      - name: Copier les fichiers vers Nginx
+        run: |
+          mkdir -p /home/debian/actions-runner/tp-eval-pweb
+          rsync -av --delete ./dist/ /home/debian/actions-runner/tp-eval-pweb/
